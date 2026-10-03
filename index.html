@@ -3,152 +3,421 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dawid Spaczyński</title>
+    <title>Portfolio - vrezikk | Web Developer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        :root {
+            --bg-color: #0a0a0a;
+            --surface-color: #1a1a1a;
+            --primary-color: #00ff88;
+            --text-main: #f0f0f0;
+            --text-muted: #a0a0a0;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            background-color: #121212;
-            color: #e0e0e0;
-            line-height: 1.6;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
         }
-        header {
-            background-color: #1e1e1e;
-            padding: 5rem 2rem;
-            text-align: center;
-            border-bottom: 3px solid #333;
+
+        body {
+            font-family: 'Fira Code', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
         }
-        header h1 {
-            margin: 0;
-            font-size: 3.5rem;
-            color: #61dafb;
+
+        /* Niestandardowy pasek przewijania */
+        ::-webkit-scrollbar {
+            width: 10px;
         }
-        header p {
-            font-size: 1.2rem;
-            color: #a0a0a0;
-            margin-top: 10px;
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
         }
+        ::-webkit-scrollbar-thumb {
+            background: var(--surface-color);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-color);
+        }
+
+        /* Nawigacja */
         nav {
             display: flex;
-            justify-content: center;
-            background-color: #181818;
-            padding: 1rem;
-            position: sticky;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background-color: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
-        nav a {
-            color: #ffffff;
-            text-decoration: none;
-            margin: 0 1.5rem;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: color 0.3s;
-        }
-        nav a:hover {
-            color: #61dafb;
-        }
-        section {
-            padding: 4rem 2rem;
-            max-width: 800px;
-            margin: auto;
-        }
-        h2 {
-            color: #ffffff;
-            border-bottom: 2px solid #61dafb;
-            padding-bottom: 0.5rem;
-            margin-bottom: 2rem;
-            font-size: 2rem;
-        }
-        .project {
-            background-color: #1e1e1e;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-            transition: transform 0.3s ease;
-        }
-        .project:hover {
-            transform: translateY(-5px);
-        }
-        .project h3 {
-            margin-top: 0;
-            color: #61dafb;
+
+        .logo {
             font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-main);
+            text-decoration: none;
         }
-        .project p {
-            color: #cccccc;
+        
+        .logo span {
+            color: var(--primary-color);
         }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Sekcja Hero */
+        header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 5%;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 5rem);
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content h1 span {
+            color: var(--primary-color);
+        }
+
+        .typewriter {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            min-height: 36px;
+        }
+
+        /* Sekcje ogólne */
+        section {
+            padding: 100px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 50%;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        /* Umiejętności (Skills) */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-tag {
+            background-color: var(--surface-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            border-left: 3px solid var(--primary-color);
+            font-size: 1rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.1);
+        }
+
+        /* Projekty */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--surface-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .tech-stack {
+            display: flex;
+            gap: 10px;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .tech-stack span {
+            font-size: 0.8rem;
+            background: rgba(255,255,255,0.05);
+            padding: 4px 8px;
+            border-radius: 4px;
+            color: var(--text-muted);
+        }
+
+        /* Przyciski */
         .btn {
             display: inline-block;
-            margin-top: 15px;
-            padding: 10px 20px;
-            background-color: #61dafb;
-            color: #121212;
+            padding: 12px 28px;
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            border-radius: 4px;
             text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
-            transition: background-color 0.3s;
+            font-size: 1rem;
+            transition: var(--transition);
+            cursor: pointer;
+            margin-top: 1rem;
         }
+
         .btn:hover {
-            background-color: #4fa8c7;
+            background-color: rgba(0, 255, 136, 0.1);
         }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--bg-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--primary-color);
+        }
+
+        /* Stopka */
         footer {
             text-align: center;
             padding: 2rem;
-            background-color: #181818;
-            border-top: 1px solid #333;
-            color: #888;
+            background-color: var(--surface-color);
+            color: var(--text-muted);
+            margin-top: 4rem;
+        }
+
+        /* Animacje wejścia */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Dawid Spaczyński</h1>
-    <p>Początkujący Frontend Developer | Pasjonat Technologii i Technik Informatyk</p>
-</header>
+    <nav>
+        <a href="#" class="logo">vre<span>zikk</span></a>
+        <div class="nav-links">
+            <a href="#about">O mnie</a>
+            <a href="#skills">Stack</a>
+            <a href="#projects">Projekty</a>
+            <a href="#contact">Kontakt</a>
+        </div>
+    </nav>
 
-<nav>
-    <a href="#omnie">O mnie</a>
-    <a href="#projekty">Projekty</a>
-    <a href="#kontakt">Kontakt</a>
-</nav>
+    <header id="home">
+        <div class="hero-content fade-in">
+            <p style="color: var(--primary-color); margin-bottom: 1rem; font-family: monospace;">> Witaj świecie, nazywam się</p>
+            <h1>vrezikk.</h1>
+            <h1>Buduję rzeczy do <span>Internetu</span>.</h1>
+            <div class="typewriter" id="typewriter"></div>
+            <p style="max-width: 500px; color: var(--text-muted); margin-bottom: 2rem;">
+                Jestem developerem z pasją do tworzenia nowoczesnych, szybkich i zoptymalizowanych aplikacji internetowych. Skupiam się na pisaniu czystego, skalowalnego kodu.
+            </p>
+            <a href="#projects" class="btn btn-primary">Zobacz moje portfolio</a>
+            <a href="https://github.com/vrezikk" target="_blank" class="btn"><i class="fab fa-github"></i> Mój GitHub</a>
+        </div>
+    </header>
 
-<section id="omnie">
-    <h2>O mnie</h2>
-    <p>Witaj na moim portfolio! Właśnie rozpocząłem swoją przygodę z tworzeniem stron internetowych i hostowaniem ich za pomocą GitHub Pages. Stale się rozwijam, ucząc się nowych technologii, takich jak HTML, CSS i JavaScript.</p>
-    <p>Moim celem jest tworzenie nowoczesnych, szybkich i estetycznych stron, które świetnie wyglądają na każdym urządzeniu.</p>
-</section>
+    <section id="about" class="fade-in">
+        <h2 class="section-title">01. O mnie</h2>
+        <div style="display: grid; grid-template-columns: 1fr; gap: 2rem; color: var(--text-muted); font-size: 1.1rem;">
+            <p>
+                Moja przygoda z programowaniem zaczęła się od ciekawości, jak działają strony internetowe. Dziś przekuwam tę ciekawość w linijki kodu, tworząc interaktywne doświadczenia dla użytkowników.
+            </p>
+            <p>
+                Gdy nie koduję, zazwyczaj zgłębiam nowe technologie, czytam dokumentacje (tak, niektórzy to lubią!) lub szukam inspiracji do kolejnych projektów. Zawsze jestem otwarty na naukę i nowe wyzwania.
+            </p>
+        </div>
+    </section>
 
-<section id="projekty">
-    <h2>Moje Projekty</h2>
-    
-    <div class="project">
-        <h3>Moje Portfolio (Ta strona)</h3>
-        <p>Pierwszy krok w świecie web developmentu! Prosta, ale nowoczesna strona wizytówka typu "One Page", napisana w czystym HTML i CSS, posiadająca "Dark Mode" i płynne przewijanie.</p>
-        <a href="#" class="btn">Zobacz kod</a>
-    </div>
+    <section id="skills" class="fade-in">
+        <h2 class="section-title">02. Technologie</h2>
+        <p style="margin-bottom: 2rem; color: var(--text-muted);">Oto technologie, z którymi aktualnie pracuję i których się uczę:</p>
+        <div class="skills-container">
+            <div class="skill-tag"><i class="fab fa-html5"></i> HTML5</div>
+            <div class="skill-tag"><i class="fab fa-css3-alt"></i> CSS3 / SCSS</div>
+            <div class="skill-tag"><i class="fab fa-js"></i> JavaScript (ES6+)</div>
+            <div class="skill-tag"><i class="fab fa-git-alt"></i> Git & GitHub</div>
+            <div class="skill-tag"><i class="fas fa-mobile-alt"></i> Responsive Design</div>
+            <div class="skill-tag"><i class="fas fa-terminal"></i> Command Line</div>
+        </div>
+    </section>
 
-    <div class="project">
-        <h3>Miejsce na kolejny projekt</h3>
-        <p>Tutaj wkrótce pojawi się moja kolejna aplikacja internetowa lub strona, gdy tylko zdobędę nowe umiejętności.</p>
-        <a href="#" class="btn">Wkrótce...</a>
-    </div>
-</section>
+    <section id="projects" class="fade-in">
+        <h2 class="section-title">03. Wybrane Projekty</h2>
+        <div class="projects-grid">
+            
+            <div class="project-card">
+                <div class="project-content">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <i class="far fa-folder-open" style="font-size: 2rem; color: var(--primary-color);"></i>
+                        <a href="https://github.com/vrezikk" target="_blank" style="color: var(--text-main);"><i class="fab fa-github" style="font-size: 1.5rem;"></i></a>
+                    </div>
+                    <h3 class="project-title">Osobiste Portfolio</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">
+                        Nowoczesna strona wizytówka typu Single Page Application (SPA), zbudowana z myślą o wydajności. Posiada responsywny design, animacje scrollowania i czysty kod.
+                    </p>
+                    <div class="tech-stack">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>JavaScript</span>
+                    </div>
+                </div>
+            </div>
 
-<section id="kontakt">
-    <h2>Kontakt</h2>
-    <p>Chcesz nawiązać współpracę lub po prostu pogadać o kodowaniu? Znajdziesz mnie na GitHubie!</p>
-    <br>
-    <a href="https://github.com/vrezikk" class="btn" target="_blank">Odwiedź mój profil GitHub</a>
-</section>
+            <div class="project-card">
+                <div class="project-content">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <i class="far fa-folder-open" style="font-size: 2rem; color: var(--primary-color);"></i>
+                        <a href="#" style="color: var(--text-main);"><i class="fab fa-github" style="font-size: 1.5rem;"></i></a>
+                    </div>
+                    <h3 class="project-title">Aplikacja To-Do (Wkrótce)</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">
+                        Interaktywna lista zadań wykorzystująca LocalStorage do zapisywania danych w przeglądarce. Pozwala na dodawanie, usuwanie i oznaczanie zadań jako wykonane.
+                    </p>
+                    <div class="tech-stack">
+                        <span>JavaScript</span>
+                        <span>DOM Manipulation</span>
+                    </div>
+                </div>
+            </div>
 
-<footer>
-    <p>&copy; 2026 vrezikk. Stworzone z pasją przy użyciu HTML & CSS.</p>
-</footer>
+        </div>
+    </section>
 
+    <section id="contact" class="fade-in" style="text-align: center; max-width: 600px;">
+        <h2 class="section-title" style="margin-bottom: 1rem;">04. Co dalej?</h2>
+        <h3 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Bądźmy w kontakcie</h3>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">
+            Aktualnie szukam nowych możliwości rozwoju i wyzwań. Moja skrzynka odbiorcza jest zawsze otwarta. Niezależnie od tego, czy masz pytanie, czy po prostu chcesz się przywitać, postaram się odpisać!
+        </p>
+        <a href="mailto:kontakt@example.com" class="btn btn-primary">Napisz do mnie</a>
+    </section>
+
+    <footer>
+        <p>Zaprojektowane i zakodowane przez <span style="color: var(--primary-color);">vrezikk</span></p>
+        <p style="font-size: 0.8rem; margin-top: 10px;">&copy; 2026</p>
+    </footer>
+
+    <script>
+        // Efekt pisania na maszynie (Typewriter effect)
+        const textArray = ["Frontend Developer", "Pasjonat Technologii", "Samouk"];
+        let textIndex = 0;
+        let charIndex = 0;
+        const typewriterElement = document.getElementById("typewriter");
+
+        function type() {
+            if (charIndex < textArray[textIndex].length) {
+                typewriterElement.innerHTML += textArray[textIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(type, 100);
+            } else {
+                setTimeout(erase, 2000);
+            }
+        }
+
+        function erase() {
+            if (charIndex > 0) {
+                typewriterElement.innerHTML = textArray[textIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(erase, 50);
+            } else {
+                textIndex++;
+                if (textIndex >= textArray.length) textIndex = 0;
+                setTimeout(type, 500);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            if(textArray.length) setTimeout(type, 1000);
+        });
+
+        // Animacje przy scrollowaniu (Intersection Observer)
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('appear');
+                    appearOnScroll.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+    </script>
 </body>
 </html>
