@@ -1,1 +1,154 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - vrezikk</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #1e1e1e;
+            padding: 5rem 2rem;
+            text-align: center;
+            border-bottom: 3px solid #333;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3.5rem;
+            color: #61dafb;
+        }
+        header p {
+            font-size: 1.2rem;
+            color: #a0a0a0;
+            margin-top: 10px;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #181818;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #61dafb;
+        }
+        section {
+            padding: 4rem 2rem;
+            max-width: 800px;
+            margin: auto;
+        }
+        h2 {
+            color: #ffffff;
+            border-bottom: 2px solid #61dafb;
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+        .project {
+            background-color: #1e1e1e;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            transition: transform 0.3s ease;
+        }
+        .project:hover {
+            transform: translateY(-5px);
+        }
+        .project h3 {
+            margin-top: 0;
+            color: #61dafb;
+            font-size: 1.5rem;
+        }
+        .project p {
+            color: #cccccc;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #61dafb;
+            color: #121212;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #4fa8c7;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: #181818;
+            border-top: 1px solid #333;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
 
+<header>
+    <h1>Cześć, jestem vrezikk</h1>
+    <p>Początkujący Frontend Developer | Pasjonat Technologii</p>
+</header>
+
+<nav>
+    <a href="#omnie">O mnie</a>
+    <a href="#projekty">Projekty</a>
+    <a href="#kontakt">Kontakt</a>
+</nav>
+
+<section id="omnie">
+    <h2>O mnie</h2>
+    <p>Witaj na moim portfolio! Właśnie rozpocząłem swoją przygodę z tworzeniem stron internetowych i hostowaniem ich za pomocą GitHub Pages. Stale się rozwijam, ucząc się nowych technologii, takich jak HTML, CSS i JavaScript.</p>
+    <p>Moim celem jest tworzenie nowoczesnych, szybkich i estetycznych stron, które świetnie wyglądają na każdym urządzeniu.</p>
+</section>
+
+<section id="projekty">
+    <h2>Moje Projekty</h2>
+    
+    <div class="project">
+        <h3>Moje Portfolio (Ta strona)</h3>
+        <p>Pierwszy krok w świecie web developmentu! Prosta, ale nowoczesna strona wizytówka typu "One Page", napisana w czystym HTML i CSS, posiadająca "Dark Mode" i płynne przewijanie.</p>
+        <a href="#" class="btn">Zobacz kod</a>
+    </div>
+
+    <div class="project">
+        <h3>Miejsce na kolejny projekt</h3>
+        <p>Tutaj wkrótce pojawi się moja kolejna aplikacja internetowa lub strona, gdy tylko zdobędę nowe umiejętności.</p>
+        <a href="#" class="btn">Wkrótce...</a>
+    </div>
+</section>
+
+<section id="kontakt">
+    <h2>Kontakt</h2>
+    <p>Chcesz nawiązać współpracę lub po prostu pogadać o kodowaniu? Znajdziesz mnie na GitHubie!</p>
+    <br>
+    <a href="https://github.com/vrezikk" class="btn" target="_blank">Odwiedź mój profil GitHub</a>
+</section>
+
+<footer>
+    <p>&copy; 2026 vrezikk. Stworzone z pasją przy użyciu HTML & CSS.</p>
+</footer>
+
+</body>
+</html>
